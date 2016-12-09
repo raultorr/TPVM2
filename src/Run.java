@@ -7,20 +7,23 @@ public class Run extends Command{
 
 	@Override
 	public boolean execute(Engine engine) {
-		// TODO Auto-generated method stub
-		return false;
+		return engine.executeRun();
 	}
 
 	@Override
 	public Command parse(String[] s) {
-		// TODO Auto-generated method stub
-		return null;
+		if (s.length==1 && s[0].equalsIgnoreCase("Run")) {
+			return new Run();
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
 	public String textHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "RUN: Execute the program " +
+				System.getProperty("line.separator");
 	}
 
 }
