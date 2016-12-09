@@ -1,22 +1,29 @@
 
-public class Reset extends Command{
+public class Reset extends Command {
+
+	public Reset() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean execute(Engine engine) {
-		// TODO Auto-generated method stub
-		return false;
+		return engine.executeReset();
 	}
 
 	@Override
 	public Command parse(String[] s) {
-		// TODO Auto-generated method stub
-		return null;
+		if (s.length==1 && s[0].equalsIgnoreCase("RESET")) {
+			return new Reset();
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
 	public String textHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return " RESET: Delete the current program " +
+				System.getProperty("line.separator");
 	}
 
 }
