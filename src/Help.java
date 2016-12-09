@@ -7,20 +7,23 @@ public class Help extends Command{
 
 	@Override
 	public boolean execute(Engine engine) {
-		// TODO Auto-generated method stub
-		return false;
+		return engine.executeHelp();
 	}
 
 	@Override
 	public Command parse(String[] s) {
-		// TODO Auto-generated method stub
-		return null;
+		if (s.length==1 && s[0].equalsIgnoreCase("Help")) {
+			return new Help();
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
 	public String textHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return " Show this help " +
+				System.getProperty("line.separator");
 	}
 
 }
