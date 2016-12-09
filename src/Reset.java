@@ -1,10 +1,6 @@
 
 public class Reset extends Command {
 
-	public Reset() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public boolean execute(Engine engine) {
 		return engine.executeReset();
@@ -25,5 +21,8 @@ public class Reset extends Command {
 		return " RESET: Delete the current program " +
 				System.getProperty("line.separator");
 	}
-
+	
+	public String toString() {
+		return "Reset";
+	}
 }

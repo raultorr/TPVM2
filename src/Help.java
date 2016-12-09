@@ -1,10 +1,6 @@
 
-public class Help extends Command{
-
-	public Help() {
-		// TODO Auto-generated constructor stub
-	}
-
+public class Help extends Command {
+	
 	@Override
 	public boolean execute(Engine engine) {
 		return engine.executeHelp();
@@ -25,5 +21,8 @@ public class Help extends Command{
 		return " Show this help " +
 				System.getProperty("line.separator");
 	}
-
+	
+	public String toString() {
+		return "Help";
+	}
 }

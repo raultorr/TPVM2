@@ -1,10 +1,6 @@
 
 public class Run extends Command{
 
-	public Run() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public boolean execute(Engine engine) {
 		return engine.executeRun();
@@ -26,4 +22,7 @@ public class Run extends Command{
 				System.getProperty("line.separator");
 	}
 
+	public String toString() {
+		return "Run";
+	}
 }

@@ -1,9 +1,5 @@
 
-public class ByteCode1 extends Command {
-
-	public ByteCode1() {
-		// TODO Auto-generated constructor stub
-	}
+public class AddByteCodeProgram extends Command {
 
 	@Override
 	public boolean execute(Engine engine) {
@@ -13,7 +9,7 @@ public class ByteCode1 extends Command {
 	@Override
 	public Command parse(String[] s) {
 		if (s.length==1 && s[0].equalsIgnoreCase("ByteCode")) {
-			return new ByteCode1();
+			return new AddByteCodeProgram();
 		}
 		else {
 			return null;
@@ -25,5 +21,8 @@ public class ByteCode1 extends Command {
 		return "BYTECODE: Load an entire bytecode program, one instruction at a time, from the command line " +
 				System.getProperty("line.separator");
 	}
-
+	
+	public String toString() {
+		return "ByteCode ";
+	}
 }

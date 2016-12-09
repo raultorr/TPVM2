@@ -1,10 +1,6 @@
 
 public class Replace extends Command {
 	private int replace;
-	
-	public Replace() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public boolean execute(Engine engine) {
@@ -32,4 +28,7 @@ public class Replace extends Command {
 				System.getProperty("line.separator");
 	}
 
+	public String toString() {
+		return "Replace";
+	}
 }

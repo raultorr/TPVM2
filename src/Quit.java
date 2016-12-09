@@ -1,10 +1,6 @@
 
 public class Quit extends Command {
 
-	public Quit() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public boolean execute(Engine engine) {
 		return engine.executeQuit();
@@ -26,4 +22,7 @@ public class Quit extends Command {
 				System.getProperty("line.separator");
 	}
 
+	public String toString() {
+		return "Quit ";
+	}
 }
