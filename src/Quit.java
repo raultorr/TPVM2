@@ -7,20 +7,23 @@ public class Quit extends Command {
 
 	@Override
 	public boolean execute(Engine engine) {
-		// TODO Auto-generated method stub
-		return false;
+		return engine.executeQuit();
 	}
 
 	@Override
 	public Command parse(String[] s) {
-		// TODO Auto-generated method stub
-		return null;
+		if (s.length==1 && s[0].equalsIgnoreCase("Quit")) {
+			return new Quit();
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
 	public String textHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "QUIT: Close the application " +
+				System.getProperty("line.separator");
 	}
 
 }
