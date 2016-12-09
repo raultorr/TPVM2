@@ -75,25 +75,29 @@ public class Engine {
 
 		return end;
 	}
-
-	/**
-	 * Executes a ByteCode instruction passed as parameter
-	 * 
-	 * @param bc
-	 *            Next ByteCode instruction to execute
-	 * @return If the method was successfully executed
-	 */
-	public boolean executeNewInst(ByteCode bc) {
-
-		boolean success = false;
-
-		if (bc != null) {
-			program.setNextByteCodeInstruction(bc);
-			success = true;
+	
+	//Nuevo método para implementar el comando bytecode
+	public boolean doByteCode() {
+		boolean execution = true;
+		String instruction;
+		ByteCode inst;
+		
+		System.out.println("Please enter the bytecode program,"
+						   + "one instruction per line");
+		instruction = scanner.nextLine();
+		while(!instruction.equalsIgnoreCase("end")) {
+			inst = ByteCodeParser.parse(instruction);
+			if(inst == null) {
+				execution = false;
+			}
+			else {
+				program.setNextByteCodeInstruction(inst);
+				instruction = scanner.nextLine();
+			}
 		}
-		return success;
+		return execution;
 	}
-
+	
 	/**
 	 * Executes the current instructions on the actual program
 	 * 
@@ -157,5 +161,23 @@ public class Engine {
 		program = new ByteCodeProgram();
 		return true;
 	}
+	
+	/*/**
+	 * Executes a ByteCode instruction passed as parameter
+	 * 
+	 * @param bc
+	 *            Next ByteCode instruction to execute
+	 * @return If the method was successfully executed
+	 *
+	public boolean executeNewInst(ByteCode bc) {
+
+		boolean success = false;
+
+		if (bc != null) {
+			program.setNextByteCodeInstruction(bc);
+			success = true;
+		}
+		return success;
+	}*/
 
 }

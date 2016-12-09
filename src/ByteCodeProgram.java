@@ -15,7 +15,7 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * It appends a new ByteCode instructrion at the end of the current program
+	 * It appends a new ByteCode instruction at the end of the current program
 	 * 
 	 * @param nextInstruction
 	 *            The next ByteCode instruction

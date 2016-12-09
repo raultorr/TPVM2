@@ -4,7 +4,7 @@
 public class Command {
 
 	public static enum ENUM_COMMAND {
-		help, quit, newinst, run, reset, replace
+		help, quit, run, reset, replace, bytecode
 	}
 
 	private ENUM_COMMAND command;
@@ -88,8 +88,8 @@ public class Command {
 		case quit:
 			success = engine.executeQuit();
 			break;
-		case newinst:
-			success = engine.executeNewInst(instruction);
+		case bytecode:
+			success = engine.doByteCode();
 			break;
 		case run:
 			success = engine.executeRun();
@@ -102,5 +102,4 @@ public class Command {
 		}
 		return success;
 	}
-
 }
