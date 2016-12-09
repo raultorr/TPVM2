@@ -56,7 +56,7 @@ public class Engine {
 
 		System.out.println(
 				"\n  HELP: Show this help \n" + "  QUIT: Close the application \n" + "  RUN: Execute the program \n"
-						+ "  NEWINST BYTECODE: Add a new instruction to the current program \n"
+						+ "  BYTECODE: Load an entire bytecode program, one instruction at a time, from the command line. \n"
 						+ "  RESET: Delete the current program \n"
 						+ "  REPLACE N: Replace insruction no. N with an instruction to be provided");
 

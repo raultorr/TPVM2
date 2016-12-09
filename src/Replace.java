@@ -14,7 +14,11 @@ public class Replace extends Command {
 	@Override
 	public Command parse(String[] s) {
 		if (s.length==1 && s[0].equalsIgnoreCase("Replace")) {
-			replace = Integer.parseInt(s[1]);
+			try {
+				replace = Integer.parseInt(s[1]);
+				} catch (Exception e) {
+				System.err.println("Invalid syntax. Usage: replace <number>");
+			}
 			return new Replace();
 		}
 		else {
