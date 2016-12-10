@@ -6,6 +6,8 @@ public class CPU {
 	private OperandStack op;
 	private boolean finish;
 	private Memory memory;
+	private int programCounter;
+	private ByteCodeProgram bcProgram;
 
 	/**
 	 * CPU class constructor. It assigns a new OperandStack and a new Memory
@@ -14,6 +16,7 @@ public class CPU {
 		op = new OperandStack();
 		finish = false;
 		memory = new Memory();
+		programCounter = 0;
 	}
 
 	/**
@@ -128,4 +131,9 @@ public class CPU {
 		return "\nState of virtual machine after execution of " + instr.toString() + ":\n   " + memory.toString()
 				+ "\n   " + op.toString();
 	}
+
+	public boolean run() {
+
+	}
+
 }
