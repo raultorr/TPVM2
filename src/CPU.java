@@ -144,7 +144,21 @@ public class CPU {
 	public String out() {
 		return "\nOutput: <<" + op.takeValue() + ">>\n";
 	}
-	
-	public 
 
+	public boolean push(int n) {
+		return op.addValue(n);
+	}
+
+	public boolean store(int n) {
+		int aux = op.takeValue();
+		boolean execution = memory.write(n, aux);
+		op.deleteValue();
+		return execution;
+	}
+
+	public boolean load(int n) {
+		int aux = memory.read(n);
+		op.addValue(aux);
+		return true;
+	}
 }

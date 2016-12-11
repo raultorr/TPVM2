@@ -4,8 +4,7 @@ public class Push extends ByteCode {
 	private int param;
 
 	public boolean execute(CPU cpu) {
-		System.out.println(cpu.out());
-		return true;
+		return cpu.push(param);
 	}
 
 	@Override
