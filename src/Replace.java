@@ -9,26 +9,29 @@ public class Replace extends Command {
 
 	@Override
 	public Command parse(String[] s) {
-		if (s.length==1 && s[0].equalsIgnoreCase("Replace")) {
+		if (s.length == 1 && s[0].equalsIgnoreCase("Replace")) {
 			try {
 				replace = Integer.parseInt(s[1]);
-				} catch (Exception e) {
+			} catch (Exception e) {
 				System.err.println("Invalid syntax. Usage: replace <number>");
 			}
 			return new Replace();
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public String textHelp() {
-		return "REPLACE N: Replace insruction no. N with an instruction to be provided" +
-				System.getProperty("line.separator");
+		return "REPLACE N: Replace insruction no. N with an instruction to be provided"
+				+ System.getProperty("line.separator");
 	}
 
 	public String toString() {
 		return "Replace";
+	}
+
+	public int getReplace() {
+		return replace;
 	}
 }

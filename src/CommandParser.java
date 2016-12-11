@@ -2,9 +2,9 @@
  * This class is the command analyzer
  */
 public class CommandParser {
-	
-	private final static Command[] commands = {new Help(),new Quit(), new Reset(),
-			 new Replace(),new Run(),new AddByteCodeProgram()};
+
+	private final static Command[] commands = { new Help(), new Quit(), new Reset(), new Replace(), new Run(),
+			new AddByteCodeProgram() };
 
 	/**
 	 * It's the main method of the class. It parsers a raw line and generates a
@@ -15,27 +15,27 @@ public class CommandParser {
 	 * @return A command object or "null" if it failed to parse
 	 */
 	public static Command parse(String line) {
-	boolean found = false;
-	int i=0;
-	Command c = null;
-	String[] words = line.split(" ");
-	
-	while (i < commands.length && !found){
-		c = commands[i].parse(words);
-		if (c!=null){
-			found=true;
-		} 
-		else {
-			i++;
+		boolean found = false;
+		int i = 0;
+		Command c = null;
+		String[] words = line.split(" ");
+
+		while (i < commands.length && !found) {
+			c = commands[i].parse(words);
+			if (c != null) {
+				found = true;
+			} else {
+				i++;
+			}
+
+		}
+		return c;
+	}
+
+	public static void showHelp() {
+		for (int i = 0; i < CommandParser.commands.length; i++) {
+			System.out.println(CommandParser.commands[i].textHelp());
 		}
 	}
-	return c;
-	}
-	
-	 public static void showHelp() {
-		for (int i=0; i < CommandParser.commands.length; i++) {
-			 System.out.println(CommandParser.commands[i].textHelp());
-		}
-	}
-	
+
 }

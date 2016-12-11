@@ -2,6 +2,12 @@
  * This class is the ByteCode analyzer
  */
 public class ByteCodeParser {
+
+	private final static Command[] bytecodeins = { new Help(), new Quit(), new Reset(), new Replace(), new Run(),
+			new AddByteCodeProgram() };
+
+}
+
 	/**
 	 * It's the main method of the class. It parsers a raw line and generates a
 	 * corresponding ByteCode object
@@ -47,4 +53,21 @@ public class ByteCodeParser {
 		}
 		return instruction;
 	}
+
+	public static ByteCode parse(String s) {
+		boolean found = false;
+		int i = 0;
+		Command c = null;
+		String[] words = s.split(" ");
+
+		while (i < commands.length && !found) {
+			c = commands[i].parse(words);
+			if (c != null) {
+				found = true;
+			} else {
+				i++;
+			}
+
+		}
+		return c;
 }

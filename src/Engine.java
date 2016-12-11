@@ -75,29 +75,27 @@ public class Engine {
 
 		return end;
 	}
-	
-	//Nuevo método para implementar el comando bytecode
+
+	// Nuevo método para implementar el comando bytecode
 	public boolean doByteCode() {
 		boolean execution = true;
 		String instruction;
 		ByteCode inst;
-		
-		System.out.println("Please enter the bytecode program,"
-						   + "one instruction per line");
+
+		System.out.println("Please enter the bytecode program," + "one instruction per line");
 		instruction = scanner.nextLine();
-		while(!instruction.equalsIgnoreCase("end")) {
+		while (!instruction.equalsIgnoreCase("end") && execution) {
 			inst = ByteCodeParser.parse(instruction);
-			if(inst == null) {
+			if (inst == null) {
 				execution = false;
-			}
-			else {
+			} else {
 				program.setNextByteCodeInstruction(inst);
 				instruction = scanner.nextLine();
 			}
 		}
 		return execution;
 	}
-	
+
 	/**
 	 * Executes the current instructions on the actual program
 	 * 
@@ -110,7 +108,8 @@ public class Engine {
 		if (program.getByteCodeProgramLength() == 0) {
 		} else {
 			for (int i = 0; i < (program.getByteCodeProgramLength()); i++) {
-				if (program.getByteCodeInstructionOnPosition(i).getName() == ByteCode.ENUM_BYTECODE.halt) {
+				//if (program.getByteCodeInstructionOnPosition(i).getName() == ByteCode.ENUM_BYTECODE.halt) {
+				if (program.getByteCodeInstructionOnPosition(i).getClass() == ) {
 					System.out.println("\nHALT: Stopping VM...");
 					break;
 				} else {
@@ -161,23 +160,20 @@ public class Engine {
 		program = new ByteCodeProgram();
 		return true;
 	}
-	
-	/*/**
-	 * Executes a ByteCode instruction passed as parameter
+
+	/*
+	 * /** Executes a ByteCode instruction passed as parameter
 	 * 
-	 * @param bc
-	 *            Next ByteCode instruction to execute
+	 * @param bc Next ByteCode instruction to execute
+	 * 
 	 * @return If the method was successfully executed
 	 *
-	public boolean executeNewInst(ByteCode bc) {
-
-		boolean success = false;
-
-		if (bc != null) {
-			program.setNextByteCodeInstruction(bc);
-			success = true;
-		}
-		return success;
-	}*/
+	 * public boolean executeNewInst(ByteCode bc) {
+	 * 
+	 * boolean success = false;
+	 * 
+	 * if (bc != null) { program.setNextByteCodeInstruction(bc); success = true;
+	 * } return success; }
+	 */
 
 }
