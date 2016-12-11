@@ -1,7 +1,15 @@
+/**
+ * This class encloses the add operation
+ */
 
 public class Mul extends ArithmeticOps {
 
-	@Override
+	/**
+	 * Performs the operation
+	 * 
+	 * @param cpu
+	 *            The actual cpu
+	 */
 	public boolean operation(CPU cpu) {
 		boolean success = false;
 		if (readyToOperate(cpu)) {
@@ -16,12 +24,22 @@ public class Mul extends ArithmeticOps {
 		return success;
 	}
 
-	@Override
+	/**
+	 * Calls operation
+	 * 
+	 * @param cpu
+	 *            The actual cpu
+	 */
 	public boolean execute(CPU cpu) {
 		return operation(cpu);
 	}
 
-	@Override
+	/**
+	 * Parses the string and checks if the command is the one of the class
+	 * 
+	 * @param s
+	 *            Array of strings to be parsed
+	 */
 	public ByteCode parse(String[] s) {
 		if (s.length == 1 && s[0].equalsIgnoreCase("mul")) {
 			return new Mul();
@@ -30,6 +48,9 @@ public class Mul extends ArithmeticOps {
 		}
 	}
 
+	/**
+	 * Regular translation of the object type to a String
+	 */
 	public String toString() {
 		return "MUL ";
 	}
