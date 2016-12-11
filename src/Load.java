@@ -1,8 +1,16 @@
-
+/**
+ * Encloses the load command
+ */
 public class Load extends ByteCode {
 
 	private int param;
 
+	/**
+	 * Executes the load command
+	 * 
+	 * @param cpu
+	 *            The actual cpu
+	 */
 	public boolean execute(CPU cpu) {
 		return cpu.load(param);
 	}
@@ -10,6 +18,12 @@ public class Load extends ByteCode {
 	public Load() {
 	}
 
+	/**
+	 * One argument constructor of the load class
+	 * 
+	 * @param n
+	 *            the position in the memory
+	 */
 	public Load(int n) {
 		param = n;
 	}

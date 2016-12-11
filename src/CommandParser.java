@@ -32,9 +32,12 @@ public class CommandParser {
 		return c;
 	}
 
+	/**
+	 * Shows the text help of all the commands
+	 */
 	public static void showHelp() {
 		for (int i = 0; i < CommandParser.commands.length; i++) {
-			System.out.println(CommandParser.commands[i].textHelp());
+			System.out.print(CommandParser.commands[i].textHelp());
 		}
 	}
 

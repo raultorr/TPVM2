@@ -17,7 +17,7 @@ public class Reset extends Command {
 
 	@Override
 	public String textHelp() {
-		return " RESET: Delete the current program " + System.getProperty("line.separator");
+		return "RESET: Delete the current program " + System.getProperty("line.separator");
 	}
 
 	public String toString() {

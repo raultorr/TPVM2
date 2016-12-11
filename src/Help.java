@@ -1,12 +1,24 @@
-
+/**
+ * Encloses the help command
+ */
 public class Help extends Command {
 
-	@Override
+	/**
+	 * Executes the help command
+	 * 
+	 * @param cpu
+	 *            The actual cpu
+	 */
 	public boolean execute(Engine engine) {
 		return engine.executeHelp();
 	}
 
-	@Override
+	/**
+	 * Parses the string and checks if the command is the one of the class
+	 * 
+	 * @param s
+	 *            Array of strings to be parsed
+	 */
 	public Command parse(String[] s) {
 		if (s.length == 1 && s[0].equalsIgnoreCase("Help")) {
 			return new Help();
@@ -15,11 +27,16 @@ public class Help extends Command {
 		}
 	}
 
-	@Override
+	/**
+	 * Generates a single string with the help of this command
+	 */
 	public String textHelp() {
-		return " Show this help " + System.getProperty("line.separator");
+		return "\nHELP: Show this help " + System.getProperty("line.separator");
 	}
 
+	/**
+	 * Regular translation of the object type to a String
+	 */
 	public String toString() {
 		return "HELP ";
 	}

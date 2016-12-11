@@ -1,14 +1,29 @@
+/**
+ * This class encloses the ifneq jump
+ */
 
 public class Ifneq extends JumpOps {
 
 	public Ifneq() {
 	}
 
+	/**
+	 * One argument constructor of the Ifneq class
+	 * 
+	 * @param n
+	 *            Represents the next instruction to be placed on the Program
+	 *            Counter if the condition is not meet
+	 */
 	public Ifneq(int n) {
 		param = n;
 	}
 
-	@Override
+	/**
+	 * Parses the string and checks if the command is the one of the class
+	 * 
+	 * @param s
+	 *            Array of strings to be parsed
+	 */
 	public ByteCode parse(String[] s) {
 		Ifneq newCommand;
 		if (s.length == 2 && s[0].equalsIgnoreCase("ifneq")) {
@@ -25,7 +40,9 @@ public class Ifneq extends JumpOps {
 		}
 	}
 
-	@Override
+	/**
+	 * Performs the comparison between the top-2 values of the stack
+	 */
 	public boolean compare(CPU cpu) {
 		boolean condition = false;
 
@@ -39,6 +56,9 @@ public class Ifneq extends JumpOps {
 		return condition;
 	}
 
+	/**
+	 * Regular translation of the object type to a String
+	 */
 	public String toString() {
 		return "IFNEQ " + param;
 	}

@@ -54,11 +54,7 @@ public class Engine {
 	 */
 	public boolean executeHelp() {
 
-		System.out.println(
-				"\n  HELP: Show this help \n" + "  QUIT: Close the application \n" + "  RUN: Execute the program \n"
-						+ "  BYTECODE: Load an entire bytecode program, one instruction at a time, from the command line. \n"
-						+ "  RESET: Delete the current program \n"
-						+ "  REPLACE N: Replace insruction no. N with an instruction to be provided");
+		CommandParser.showHelp();
 
 		return true;
 	}
@@ -76,7 +72,11 @@ public class Engine {
 		return end;
 	}
 
-	// Nuevo método para implementar el comando bytecode
+	/**
+	 * This method allows the user to introduce a ByteCode program in a row
+	 * 
+	 * @return If it had success
+	 */
 	public boolean doByteCode() {
 		boolean execution = true;
 		String instruction;
@@ -108,8 +108,13 @@ public class Engine {
 		if (program.getByteCodeProgramLength() == 0) {
 			success = false;
 		} else {
-			cpu.run();
-			System.out.println(cpu);
+			if (!cpu.run()) {
+				System.out.println("Error");
+				System.out.println(cpu);
+			} else {
+				System.out.println(cpu);
+			}
+
 		}
 
 		return success;
@@ -151,20 +156,5 @@ public class Engine {
 		program = new ByteCodeProgram();
 		return true;
 	}
-
-	/*
-	 * /** Executes a ByteCode instruction passed as parameter
-	 * 
-	 * @param bc Next ByteCode instruction to execute
-	 * 
-	 * @return If the method was successfully executed
-	 *
-	 * public boolean executeNewInst(ByteCode bc) {
-	 * 
-	 * boolean success = false;
-	 * 
-	 * if (bc != null) { program.setNextByteCodeInstruction(bc); success = true;
-	 * } return success; }
-	 */
 
 }

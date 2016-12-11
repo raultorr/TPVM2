@@ -19,6 +19,10 @@ public class CPU {
 		programCounter = 0;
 	}
 
+	/**
+	 * CPU class 1 argument constructor. It assigns a new OperandStack, a new
+	 * Memory and a ByteCodeProgram
+	 */
 	public CPU(ByteCodeProgram bcnew) {
 		op = new OperandStack();
 		finish = false;
@@ -37,41 +41,6 @@ public class CPU {
 	}
 
 	/**
-	 * It's the main method of the class. This method executes a ByteCode
-	 * instruction and modifies the OperandStack and Memory values
-	 * 
-	 * @param instr
-	 *            The next ByteCode instruction to be executed
-	 * @return If the ByteCode instruction was successfully executed
-	 */
-	/*
-	 * public boolean execute(ByteCode instr) { boolean execution = true;
-	 * ByteCode.ENUM_BYTECODE i = instr.getName(); int n = instr.getParam(); int
-	 * aux, result;
-	 * 
-	 * switch (i) { case push: execution = op.addValue(n); break; case load: aux
-	 * = memory.read(n); op.addValue(aux); break; case store: aux =
-	 * op.takeValue(); execution = memory.write(n, aux); op.deleteValue();
-	 * break; case add: if (op.getOccupied() < 2) { execution = false; } else {
-	 * aux = op.takeValue(); op.deleteValue(); n = op.takeValue();
-	 * op.deleteValue(); result = aux + n; op.addValue(result); } break; case
-	 * sub: if (op.getOccupied() < 2) { execution = false; } else { aux =
-	 * op.takeValue(); op.deleteValue(); n = op.takeValue(); op.deleteValue();
-	 * result = n - aux; op.addValue(result); } break; case mul: if
-	 * (op.getOccupied() < 2) { execution = false; } else { aux =
-	 * op.takeValue(); op.deleteValue(); n = op.takeValue(); op.deleteValue();
-	 * result = aux * n; op.addValue(result); } break; case div: if
-	 * (op.getOccupied() < 2) { execution = false; } else { aux =
-	 * op.takeValue(); if (aux != 0) { op.deleteValue(); n = op.takeValue();
-	 * op.deleteValue(); result = n / aux; op.addValue(result); } else {
-	 * execution = false; } } break; case out: System.out.println("\nOutput: <<"
-	 * + op.takeValue() + ">>\n"); break; case halt: finish = true; break; }
-	 * 
-	 * System.out.println(this.toString(instr));
-	 * 
-	 * return execution; }
-	 */
-	/**
 	 * Generates a String ready to be printed on the screen
 	 * 
 	 * @param instr
@@ -83,6 +52,11 @@ public class CPU {
 				+ op.toString();
 	}
 
+	/**
+	 * The main loop for executing the current ByteCode program
+	 * 
+	 * @return If it had success
+	 */
 	public boolean run() {
 		boolean errorOnExecution = false;
 		while ((programCounter < bcProgram.getByteCodeProgramLength())
@@ -93,42 +67,81 @@ public class CPU {
 			}
 		}
 
-		return true;
+		return !errorOnExecution;
 	}
 
-	public int getProgramCounterLength() {
+	/**
+	 * Provides the program length
+	 * 
+	 * @return The Program length
+	 */
+	public int getProgramLength() {
 		return bcProgram.getByteCodeProgramLength();
 	}
 
+	/**
+	 * Provides the next instruction to be executed
+	 * 
+	 * @return The next instruction to be executed by the CPU
+	 */
 	public int getProgramCounter() {
 		return programCounter;
 	}
 
+	/**
+	 * Sets a number as the new program counter position
+	 * 
+	 * @param n
+	 *            The new position
+	 */
 	public void setProgramCounter(int n) {
 		programCounter = n;
 	}
 
-	public void setByteCodeProgramReference(ByteCodeProgram newbc) {
-		bcProgram = newbc;
-	}
-
+	/**
+	 * Increases the program counter by 1
+	 */
 	public void increaseProgramCounter() {
 		programCounter++;
 	}
 
+	/**
+	 * It freezes the CPU
+	 * 
+	 * @return If it had success
+	 */
 	public boolean halt() {
 		finish = true;
 		return true;
 	}
 
+	/**
+	 * Generates a string with the value of the top of the stack
+	 * 
+	 * @return The generated string
+	 */
 	public String out() {
 		return "\nOutput: <<" + op.takeValue() + ">>\n";
 	}
 
+	/**
+	 * Method that adds a value to the stack
+	 * 
+	 * @param n
+	 *            The parameter of the push command
+	 * @return If it had success
+	 */
 	public boolean push(int n) {
 		return op.addValue(n);
 	}
 
+	/**
+	 * Method that stores a value of the stack
+	 * 
+	 * @param n
+	 *            The memory position
+	 * @return If it had success
+	 */
 	public boolean store(int n) {
 		int aux = op.takeValue();
 		boolean execution = memory.write(n, aux);
@@ -136,12 +149,24 @@ public class CPU {
 		return execution;
 	}
 
+	/**
+	 * Method that loads a value of the memory to the stack
+	 * 
+	 * @param n
+	 *            The memory position
+	 * @return If it had success
+	 */
 	public boolean load(int n) {
 		int aux = memory.read(n);
 		op.addValue(aux);
 		return true;
 	}
 
+	/**
+	 * Checks if there is at least two numbers on the stack
+	 * 
+	 * @return If it is ready or not
+	 */
 	public boolean atLeastTwoNumsOnStack() {
 		boolean ready = true;
 		if (op.getOccupied() < 2) {
@@ -150,14 +175,25 @@ public class CPU {
 		return ready;
 	}
 
+	/**
+	 * Takes the value of the top of the stack
+	 * 
+	 * @return The integer value
+	 */
 	public int takeValue() {
 		return op.takeValue();
 	}
 
+	/**
+	 * Deletes the value of the top of the stack
+	 */
 	public void deleteValue() {
 		op.deleteValue();
 	}
 
+	/**
+	 * Adds a value to the top of the stack
+	 */
 	public void addValue(int n) {
 		op.addValue(n);
 	}
