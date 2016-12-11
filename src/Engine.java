@@ -38,9 +38,9 @@ public class Engine {
 				if (command.execute(this) == false) {
 					System.err.println("Error: incorrect execution of the command");
 				} else { // Execution was successful
-					if (command.getCommandType() != Command.ENUM_COMMAND.quit)
+					if (!(command instanceof Quit)) {
 						System.out.println(program.toString());
-
+					}
 				}
 			}
 		}

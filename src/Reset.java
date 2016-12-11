@@ -8,20 +8,18 @@ public class Reset extends Command {
 
 	@Override
 	public Command parse(String[] s) {
-		if (s.length==1 && s[0].equalsIgnoreCase("RESET")) {
+		if (s.length == 1 && s[0].equalsIgnoreCase("RESET")) {
 			return new Reset();
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public String textHelp() {
-		return " RESET: Delete the current program " +
-				System.getProperty("line.separator");
+		return " RESET: Delete the current program " + System.getProperty("line.separator");
 	}
-	
+
 	public String toString() {
 		return "Reset";
 	}

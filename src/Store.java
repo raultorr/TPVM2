@@ -7,15 +7,25 @@ public class Store extends ByteCode {
 		return cpu.store(param);
 	}
 
+	public Store() {
+	}
+
+	public Store(int n) {
+		param = n;
+	}
+
 	@Override
 	public ByteCode parse(String[] s) {
+		Store newCommand;
 		if (s.length == 1 && s[0].equalsIgnoreCase("store")) {
 			try {
-				param = Integer.parseInt(s[1]);
+				int aux = Integer.parseInt(s[1]);
+				newCommand = new Store(aux);
+				return newCommand;
 			} catch (Exception e) {
 				System.err.println("Invalid syntax. Usage: store <number>");
 			}
-			return new Store();
+			return null;
 		} else {
 			return null;
 		}

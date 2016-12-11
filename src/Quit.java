@@ -8,18 +8,16 @@ public class Quit extends Command {
 
 	@Override
 	public Command parse(String[] s) {
-		if (s.length==1 && s[0].equalsIgnoreCase("Quit")) {
+		if (s.length == 1 && s[0].equalsIgnoreCase("Quit")) {
 			return new Quit();
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public String textHelp() {
-		return "QUIT: Close the application " +
-				System.getProperty("line.separator");
+		return "QUIT: Close the application " + System.getProperty("line.separator");
 	}
 
 	public String toString() {

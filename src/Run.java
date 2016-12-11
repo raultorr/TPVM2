@@ -1,5 +1,5 @@
 
-public class Run extends Command{
+public class Run extends Command {
 
 	@Override
 	public boolean execute(Engine engine) {
@@ -8,18 +8,16 @@ public class Run extends Command{
 
 	@Override
 	public Command parse(String[] s) {
-		if (s.length==1 && s[0].equalsIgnoreCase("Run")) {
+		if (s.length == 1 && s[0].equalsIgnoreCase("Run")) {
 			return new Run();
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public String textHelp() {
-		return "RUN: Execute the program " +
-				System.getProperty("line.separator");
+		return "RUN: Execute the program " + System.getProperty("line.separator");
 	}
 
 	public String toString() {

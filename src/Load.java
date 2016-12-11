@@ -7,15 +7,25 @@ public class Load extends ByteCode {
 		return cpu.load(param);
 	}
 
+	public Load() {
+	}
+
+	public Load(int n) {
+		param = n;
+	}
+
 	@Override
 	public ByteCode parse(String[] s) {
+		Load newCommand;
 		if (s.length == 1 && s[0].equalsIgnoreCase("load")) {
 			try {
-				param = Integer.parseInt(s[1]);
+				int aux = Integer.parseInt(s[1]);
+				newCommand = new Load(aux);
+				return newCommand;
 			} catch (Exception e) {
 				System.err.println("Invalid syntax. Usage: load <number>");
 			}
-			return new Load();
+			return null;
 		} else {
 			return null;
 		}

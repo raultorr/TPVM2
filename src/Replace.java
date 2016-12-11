@@ -7,15 +7,25 @@ public class Replace extends Command {
 		return engine.executeReplace(replace);
 	}
 
+	public Replace() {
+	}
+
+	public Replace(int n) {
+		replace = n;
+	}
+
 	@Override
 	public Command parse(String[] s) {
-		if (s.length == 1 && s[0].equalsIgnoreCase("Replace")) {
+		Replace newCommand;
+		if (s.length == 1 && s[0].equalsIgnoreCase("replace")) {
 			try {
-				replace = Integer.parseInt(s[1]);
+				int aux = Integer.parseInt(s[1]);
+				newCommand = new Replace(aux);
+				return newCommand;
 			} catch (Exception e) {
 				System.err.println("Invalid syntax. Usage: replace <number>");
 			}
-			return new Replace();
+			return null;
 		} else {
 			return null;
 		}

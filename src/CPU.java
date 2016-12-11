@@ -161,4 +161,24 @@ public class CPU {
 		op.addValue(aux);
 		return true;
 	}
+
+	public boolean atLeastTwoNumsOnStack() {
+		boolean ready = true;
+		if (op.getOccupied() < 2) {
+			ready = false;
+		}
+		return ready;
+	}
+
+	public int takeValue() {
+		return op.takeValue();
+	}
+
+	public void deleteValue() {
+		op.deleteValue();
+	}
+
+	public void addValue(int n) {
+		op.addValue(n);
+	}
 }

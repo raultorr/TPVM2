@@ -3,10 +3,8 @@
  */
 public class ByteCodeParser {
 
-	private final static Command[] bytecodeins = { new Help(), new Quit(), new Reset(), new Replace(), new Run(),
-			new AddByteCodeProgram() };
-
-}
+	private final static ByteCode[] bytecodeins = { new Add(), new Sub(), new Mul(), new Div(), new Ifeq(), new Ifneq(),
+			new Ifle(), new Ifleq(), new Push(), new Store(), new Load(), new Halt(), new Out() };
 
 	/**
 	 * It's the main method of the class. It parsers a raw line and generates a
@@ -16,6 +14,7 @@ public class ByteCodeParser {
 	 *            The raw string line
 	 * @return A ByteCode object or "null" if it failed to parse
 	 */
+	/*
 	public static ByteCode parse(String s) {
 		ByteCode instruction = null;
 		String[] arrayOfStrings = s.split(" ");
@@ -53,21 +52,22 @@ public class ByteCodeParser {
 		}
 		return instruction;
 	}
-
+	*/
+	
 	public static ByteCode parse(String s) {
 		boolean found = false;
 		int i = 0;
-		Command c = null;
+		ByteCode b = null;
 		String[] words = s.split(" ");
 
-		while (i < commands.length && !found) {
-			c = commands[i].parse(words);
-			if (c != null) {
+		while (i < bytecodeins.length && !found) {
+			b = bytecodeins[i].parse(words);
+			if (b != null) {
 				found = true;
 			} else {
 				i++;
 			}
 
 		}
-		return c;
+		return b;
 }

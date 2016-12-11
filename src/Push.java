@@ -7,15 +7,25 @@ public class Push extends ByteCode {
 		return cpu.push(param);
 	}
 
+	public Push() {
+	}
+
+	public Push(int n) {
+		param = n;
+	}
+
 	@Override
 	public ByteCode parse(String[] s) {
+		Push newCommand;
 		if (s.length == 1 && s[0].equalsIgnoreCase("push")) {
 			try {
-				param = Integer.parseInt(s[1]);
+				int aux = Integer.parseInt(s[1]);
+				newCommand = new Push(aux);
+				return newCommand;
 			} catch (Exception e) {
 				System.err.println("Invalid syntax. Usage: push <number>");
 			}
-			return new Push();
+			return null;
 		} else {
 			return null;
 		}
