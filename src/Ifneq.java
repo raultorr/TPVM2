@@ -1,22 +1,45 @@
 
 public class Ifneq extends JumpOps {
 
+	public Ifneq() {
+	}
+
+	public Ifneq(int n) {
+		param = n;
+	}
+
+	@Override
+	public ByteCode parse(String[] s) {
+		Ifneq newCommand;
+		if (s.length == 1 && s[0].equalsIgnoreCase("ifneq")) {
+			try {
+				int aux = Integer.parseInt(s[1]);
+				newCommand = new Ifneq(aux);
+				return newCommand;
+			} catch (Exception e) {
+				System.err.println("Invalid syntax. Usage: ifneq <number>");
+			}
+			return null;
+		} else {
+			return null;
+		}
+	}
+
 	@Override
 	public boolean compare(CPU cpu) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean condition = false;
+
+		int aux = cpu.takeValue();
+		cpu.deleteValue();
+		int aux2 = cpu.takeValue();
+		cpu.deleteValue();
+		if (aux != aux2) {
+			condition = true;
+		}
+		return condition;
 	}
 
-	@Override
-	public boolean execute(CPU cpu) {
-		// TODO Auto-generated method stub
-		return false;
+	public String toString() {
+		return "Ifneq";
 	}
-
-	@Override
-	public ByteCode parse(String[] words) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -36,90 +36,33 @@ public class CPU {
 	 *            The next ByteCode instruction to be executed
 	 * @return If the ByteCode instruction was successfully executed
 	 */
-	public boolean execute(ByteCode instr) {
-		boolean execution = true;
-		ByteCode.ENUM_BYTECODE i = instr.getName();
-		int n = instr.getParam();
-		int aux, result;
-
-		switch (i) {
-		case push:
-			execution = op.addValue(n);
-			break;
-		case load:
-			aux = memory.read(n);
-			op.addValue(aux);
-			break;
-		case store:
-			aux = op.takeValue();
-			execution = memory.write(n, aux);
-			op.deleteValue();
-			break;
-		case add:
-			if (op.getOccupied() < 2) {
-				execution = false;
-			} else {
-				aux = op.takeValue();
-				op.deleteValue();
-				n = op.takeValue();
-				op.deleteValue();
-				result = aux + n;
-				op.addValue(result);
-			}
-			break;
-		case sub:
-			if (op.getOccupied() < 2) {
-				execution = false;
-			} else {
-				aux = op.takeValue();
-				op.deleteValue();
-				n = op.takeValue();
-				op.deleteValue();
-				result = n - aux;
-				op.addValue(result);
-			}
-			break;
-		case mul:
-			if (op.getOccupied() < 2) {
-				execution = false;
-			} else {
-				aux = op.takeValue();
-				op.deleteValue();
-				n = op.takeValue();
-				op.deleteValue();
-				result = aux * n;
-				op.addValue(result);
-			}
-			break;
-		case div:
-			if (op.getOccupied() < 2) {
-				execution = false;
-			} else {
-				aux = op.takeValue();
-				if (aux != 0) {
-					op.deleteValue();
-					n = op.takeValue();
-					op.deleteValue();
-					result = n / aux;
-					op.addValue(result);
-				} else {
-					execution = false;
-				}
-			}
-			break;
-		case out:
-			System.out.println("\nOutput: <<" + op.takeValue() + ">>\n");
-			break;
-		case halt:
-			finish = true;
-			break;
-		}
-
-		System.out.println(this.toString(instr));
-
-		return execution;
-	}
-
+	/*
+	 * public boolean execute(ByteCode instr) { boolean execution = true;
+	 * ByteCode.ENUM_BYTECODE i = instr.getName(); int n = instr.getParam(); int
+	 * aux, result;
+	 * 
+	 * switch (i) { case push: execution = op.addValue(n); break; case load: aux
+	 * = memory.read(n); op.addValue(aux); break; case store: aux =
+	 * op.takeValue(); execution = memory.write(n, aux); op.deleteValue();
+	 * break; case add: if (op.getOccupied() < 2) { execution = false; } else {
+	 * aux = op.takeValue(); op.deleteValue(); n = op.takeValue();
+	 * op.deleteValue(); result = aux + n; op.addValue(result); } break; case
+	 * sub: if (op.getOccupied() < 2) { execution = false; } else { aux =
+	 * op.takeValue(); op.deleteValue(); n = op.takeValue(); op.deleteValue();
+	 * result = n - aux; op.addValue(result); } break; case mul: if
+	 * (op.getOccupied() < 2) { execution = false; } else { aux =
+	 * op.takeValue(); op.deleteValue(); n = op.takeValue(); op.deleteValue();
+	 * result = aux * n; op.addValue(result); } break; case div: if
+	 * (op.getOccupied() < 2) { execution = false; } else { aux =
+	 * op.takeValue(); if (aux != 0) { op.deleteValue(); n = op.takeValue();
+	 * op.deleteValue(); result = n / aux; op.addValue(result); } else {
+	 * execution = false; } } break; case out: System.out.println("\nOutput: <<"
+	 * + op.takeValue() + ">>\n"); break; case halt: finish = true; break; }
+	 * 
+	 * System.out.println(this.toString(instr));
+	 * 
+	 * return execution; }
+	 */
 	/**
 	 * Generates a String ready to be printed on the screen
 	 * 
@@ -133,7 +76,23 @@ public class CPU {
 	}
 
 	public boolean run() {
+		return true;
+	}
 
+	public int getProgramCounterLength() {
+		return bcProgram.getByteCodeProgramLength();
+	}
+
+	public int getProgramCounter() {
+		return programCounter;
+	}
+
+	public void setProgramCounter(int n) {
+		programCounter = n;
+	}
+
+	public void increaseProgramCounter() {
+		programCounter++;
 	}
 
 	public boolean halt() {
