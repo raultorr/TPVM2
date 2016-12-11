@@ -21,6 +21,6 @@ public class Quit extends Command {
 	}
 
 	public String toString() {
-		return "Quit ";
+		return "QUIT ";
 	}
 }

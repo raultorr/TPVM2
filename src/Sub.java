@@ -31,6 +31,6 @@ public class Sub extends ArithmeticOps {
 	}
 
 	public String toString() {
-		return "Sub";
+		return "SUB ";
 	}
 }

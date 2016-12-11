@@ -21,6 +21,6 @@ public class Run extends Command {
 	}
 
 	public String toString() {
-		return "Run";
+		return "RUN ";
 	}
 }

@@ -17,7 +17,7 @@ public class Load extends ByteCode {
 	@Override
 	public ByteCode parse(String[] s) {
 		Load newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("load")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("load")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Load(aux);
@@ -32,7 +32,7 @@ public class Load extends ByteCode {
 	}
 
 	public String toString() {
-		return "Load";
+		return "LOAD " + param;
 	}
 
 }

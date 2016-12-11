@@ -39,6 +39,6 @@ public class Div extends ArithmeticOps {
 	}
 
 	public String toString() {
-		return "Div";
+		return "DIV ";
 	}
 }

@@ -21,6 +21,6 @@ public class Reset extends Command {
 	}
 
 	public String toString() {
-		return "Reset";
+		return "RESET ";
 	}
 }

@@ -17,7 +17,7 @@ public class Replace extends Command {
 	@Override
 	public Command parse(String[] s) {
 		Replace newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("replace")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("replace")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Replace(aux);
@@ -38,7 +38,7 @@ public class Replace extends Command {
 	}
 
 	public String toString() {
-		return "Replace";
+		return "Replace" + replace;
 	}
 
 	public int getReplace() {

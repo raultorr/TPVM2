@@ -17,7 +17,7 @@ public class Push extends ByteCode {
 	@Override
 	public ByteCode parse(String[] s) {
 		Push newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("push")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("push")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Push(aux);
@@ -32,6 +32,6 @@ public class Push extends ByteCode {
 	}
 
 	public String toString() {
-		return "Push";
+		return "PUSH " + param;
 	}
 }

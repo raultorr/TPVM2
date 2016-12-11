@@ -31,6 +31,6 @@ public class Mul extends ArithmeticOps {
 	}
 
 	public String toString() {
-		return "Mul";
+		return "MUL ";
 	}
 }

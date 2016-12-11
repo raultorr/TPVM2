@@ -17,7 +17,7 @@ public class Store extends ByteCode {
 	@Override
 	public ByteCode parse(String[] s) {
 		Store newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("store")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("store")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Store(aux);
@@ -32,7 +32,7 @@ public class Store extends ByteCode {
 	}
 
 	public String toString() {
-		return "Store";
+		return "STORE " + param;
 	}
 
 }

@@ -4,7 +4,7 @@
 public class ByteCodeParser {
 
 	private final static ByteCode[] bytecodeins = { new Add(), new Sub(), new Mul(), new Div(), new Ifeq(), new Ifneq(),
-			new Ifle(), new Ifleq(), new Push(), new Store(), new Load(), new Halt(), new Out() };
+			new Ifle(), new Ifleq(), new Push(), new Store(), new Load(), new Halt(), new Out(), new Goto() };
 
 	/**
 	 * It's the main method of the class. It parsers a raw line and generates a
@@ -51,6 +51,7 @@ public class ByteCodeParser {
 		String[] words = s.split(" ");
 
 		while (i < bytecodeins.length && !found) {
+
 			b = bytecodeins[i].parse(words);
 			if (b != null) {
 				found = true;

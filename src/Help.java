@@ -21,6 +21,6 @@ public class Help extends Command {
 	}
 
 	public String toString() {
-		return "Help";
+		return "HELP ";
 	}
 }

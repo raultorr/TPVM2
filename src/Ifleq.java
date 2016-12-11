@@ -11,7 +11,7 @@ public class Ifleq extends JumpOps {
 	@Override
 	public ByteCode parse(String[] s) {
 		Ifleq newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("ifleq")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("ifleq")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Ifleq(aux);
@@ -40,7 +40,7 @@ public class Ifleq extends JumpOps {
 	}
 
 	public String toString() {
-		return "Ifleq";
+		return "IFLEQ " + param;
 	}
 
 }

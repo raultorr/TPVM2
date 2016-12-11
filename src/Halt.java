@@ -16,6 +16,6 @@ public class Halt extends ByteCode {
 	}
 
 	public String toString() {
-		return "Halt";
+		return "HALT ";
 	}
 }

@@ -19,6 +19,14 @@ public class CPU {
 		programCounter = 0;
 	}
 
+	public CPU(ByteCodeProgram bcnew) {
+		op = new OperandStack();
+		finish = false;
+		memory = new Memory();
+		programCounter = 0;
+		bcProgram = bcnew;
+	}
+
 	/**
 	 * Provides the value of the "finish" attribute
 	 * 
@@ -70,12 +78,21 @@ public class CPU {
 	 *            The ByteCode instruction
 	 * @return The String generated
 	 */
-	public String toString(ByteCode instr) {
-		return "\nState of virtual machine after execution of " + instr.toString() + ":\n   " + memory.toString()
-				+ "\n   " + op.toString();
+	public String toString() {
+		return "\nState of virtual machine after execution of the program:\n   " + memory.toString() + "\n   "
+				+ op.toString();
 	}
 
 	public boolean run() {
+		boolean errorOnExecution = false;
+		while ((programCounter < bcProgram.getByteCodeProgramLength())
+				&& !(bcProgram.getByteCodeInstructionOnPosition(programCounter) instanceof Halt) && !errorOnExecution) {
+			increaseProgramCounter();
+			if (bcProgram.getByteCodeInstructionOnPosition(programCounter - 1).execute(this) == false) {
+				errorOnExecution = true;
+			}
+		}
+
 		return true;
 	}
 
@@ -89,6 +106,10 @@ public class CPU {
 
 	public void setProgramCounter(int n) {
 		programCounter = n;
+	}
+
+	public void setByteCodeProgramReference(ByteCodeProgram newbc) {
+		bcProgram = newbc;
 	}
 
 	public void increaseProgramCounter() {

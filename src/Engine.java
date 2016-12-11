@@ -82,7 +82,7 @@ public class Engine {
 		String instruction;
 		ByteCode inst;
 
-		System.out.println("Please enter the bytecode program," + "one instruction per line");
+		System.out.println("Please enter the bytecode program," + " one instruction per line:");
 		instruction = scanner.nextLine();
 		while (!instruction.equalsIgnoreCase("end") && execution) {
 			inst = ByteCodeParser.parse(instruction);
@@ -103,22 +103,13 @@ public class Engine {
 	 */
 	public boolean executeRun() {
 
-		cpu = new CPU();
+		cpu = new CPU(program);
 		boolean success = true;
 		if (program.getByteCodeProgramLength() == 0) {
+			success = false;
 		} else {
-			for (int i = 0; i < (program.getByteCodeProgramLength()); i++) {
-				//if (program.getByteCodeInstructionOnPosition(i).getName() == ByteCode.ENUM_BYTECODE.halt) {
-				if (program.getByteCodeInstructionOnPosition(i).getClass() == ) {
-					System.out.println("\nHALT: Stopping VM...");
-					break;
-				} else {
-					if (!cpu.execute(program.getByteCodeInstructionOnPosition(i))) {
-						success = false;
-					}
-				}
-			}
-
+			cpu.run();
+			System.out.println(cpu);
 		}
 
 		return success;

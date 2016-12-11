@@ -22,7 +22,7 @@ public class Goto extends ByteCode {
 	@Override
 	public ByteCode parse(String[] s) {
 		Goto newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("ifle")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("goto")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Goto(aux);
@@ -39,6 +39,6 @@ public class Goto extends ByteCode {
 	@Override
 
 	public String toString() {
-		return "Goto";
+		return "GOTO " + param;
 	}
 }

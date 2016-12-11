@@ -11,7 +11,7 @@ public class Ifle extends JumpOps {
 	@Override
 	public ByteCode parse(String[] s) {
 		Ifle newCommand;
-		if (s.length == 1 && s[0].equalsIgnoreCase("ifle")) {
+		if (s.length == 2 && s[0].equalsIgnoreCase("ifle")) {
 			try {
 				int aux = Integer.parseInt(s[1]);
 				newCommand = new Ifle(aux);
@@ -40,6 +40,6 @@ public class Ifle extends JumpOps {
 	}
 
 	public String toString() {
-		return "Ifle";
+		return "IFLE " + param;
 	}
 }
