@@ -1,16 +1,21 @@
 
 public class Out extends ByteCode {
 
-	@Override
 	public boolean execute(CPU cpu) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println(cpu.out());
+		return true;
 	}
 
 	@Override
-	public ByteCode parse(String[] words) {
-		// TODO Auto-generated method stub
-		return null;
+	public ByteCode parse(String[] s) {
+		if (s.length == 1 && s[0].equalsIgnoreCase("out")) {
+			return new Out();
+		} else {
+			return null;
+		}
 	}
 
+	public String toString() {
+		return "Out";
+	}
 }

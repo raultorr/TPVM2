@@ -136,4 +136,15 @@ public class CPU {
 
 	}
 
+	public boolean halt() {
+		finish = true;
+		return true;
+	}
+
+	public String out() {
+		return "\nOutput: <<" + op.takeValue() + ">>\n";
+	}
+	
+	public 
+
 }
