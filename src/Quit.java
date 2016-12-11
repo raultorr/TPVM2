@@ -6,8 +6,8 @@ public class Quit extends Command {
 	/**
 	 * Stops the application
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.executeQuit();

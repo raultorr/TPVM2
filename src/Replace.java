@@ -7,8 +7,8 @@ public class Replace extends Command {
 	/**
 	 * Executes the replace command
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.executeReplace(replace);

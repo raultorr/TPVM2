@@ -6,8 +6,8 @@ public class Run extends Command {
 	/**
 	 * Executes the instructions on the program
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.executeRun();

@@ -22,6 +22,9 @@ public class CPU {
 	/**
 	 * CPU class 1 argument constructor. It assigns a new OperandStack, a new
 	 * Memory and a ByteCodeProgram
+	 * 
+	 * @param bcnew
+	 *            The new bytecode program
 	 */
 	public CPU(ByteCodeProgram bcnew) {
 		op = new OperandStack();
@@ -42,10 +45,6 @@ public class CPU {
 
 	/**
 	 * Generates a String ready to be printed on the screen
-	 * 
-	 * @param instr
-	 *            The ByteCode instruction
-	 * @return The String generated
 	 */
 	public String toString() {
 		return "\nState of virtual machine after execution of the program:\n   " + memory.toString() + "\n   "
@@ -193,6 +192,9 @@ public class CPU {
 
 	/**
 	 * Adds a value to the top of the stack
+	 * 
+	 * @param n
+	 *            the value
 	 */
 	public void addValue(int n) {
 		op.addValue(n);

@@ -6,8 +6,8 @@ public class Help extends Command {
 	/**
 	 * Executes the help command
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.executeHelp();

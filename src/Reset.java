@@ -6,8 +6,8 @@ public class Reset extends Command {
 	/**
 	 * Resets the program, cpu, stack and the memory
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.executeReset();

@@ -6,8 +6,8 @@ public class AddByteCodeProgram extends Command {
 	/**
 	 * Calls the corresponding method of the engine
 	 * 
-	 * @param cpu
-	 *            The actual cpu
+	 * @param engine
+	 *            The actual engine
 	 */
 	public boolean execute(Engine engine) {
 		return engine.doByteCode();
